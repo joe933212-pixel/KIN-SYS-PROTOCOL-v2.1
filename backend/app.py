@@ -1,33 +1,16 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
 
-# Initialize the Flask application
 app = Flask(__name__)
-
-# Enable CORS for all routes
 CORS(app)
 
-# Configure the database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# Register blueprints here
+# from yourmodule import your_blueprint
+# app.register_blueprint(your_blueprint)
 
-# Initialize the database
-db = SQLAlchemy(app)
-
-# Example model
-class ExampleModel(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-
-    def __repr__(self):
-        return f'<ExampleModel {self.name}>'
-
-# Example route
-@app.route('/api/example', methods=['GET'])
-def get_example():
-    data = {'message': 'This is an example route.'}
-    return jsonify(data)
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({'status': 'healthy'}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)

@@ -1,11 +1,5 @@
-from flask import Flask
-from flask_cors import CORS
+import os
 
-app = Flask(__name__)
-CORS(app)
-
-from backend.routes import api
-app.register_blueprint(api)
-
-if __name__ == '__main__':
-    app.run(debug=False)
+# Bind to the PORT environment variable with host 0.0.0.0
+PORT = os.environ.get('PORT', 5000)
+HOST = '0.0.0.0'

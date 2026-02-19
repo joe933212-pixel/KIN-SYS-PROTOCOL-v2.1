@@ -1,4 +1,4 @@
 Flask
-psycopg2
-web3
-polygon\n
+SQLAlchemy
+Web3
+# Add other Python dependencies here

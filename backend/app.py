@@ -1,16 +1,1 @@
-from flask import Flask, jsonify
-from flask_cors import CORS
-
-app = Flask(__name__)
-CORS(app)
-
-# Register blueprints here
-# from yourmodule import your_blueprint
-# app.register_blueprint(your_blueprint)
-
-@app.route('/health', methods=['GET'])
-def health_check():
-    return jsonify({'status': 'healthy'}), 200
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+from flask import Flask\nfrom flask_cors import CORS\n\napp = Flask(__name__)\n\n# Enable CORS for all routes\nCORS(app)\n\n# Your existing code...\n

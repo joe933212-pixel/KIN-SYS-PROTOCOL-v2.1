@@ -1,0 +1,4 @@
+Flask
+psycopg2
+web3
+polygon\n
